@@ -13,4 +13,5 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 
-## 
+## About solution
+Main idea is change class when locale changed. If you want to use 1 font whole project you can create wrapper for whole project.
