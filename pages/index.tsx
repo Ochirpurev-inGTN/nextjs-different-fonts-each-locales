@@ -4,16 +4,11 @@ import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 
 const Home: NextPage = () => {
   const router = useRouter();
   const { t } = useTranslation("common");
   const { pathname, asPath, query, locale } = router;
-
-  useEffect(() => {
-    console.log("my locale == ", locale);
-  }, [locale]);
 
   const localeChanger = (newLocale: string) => {
     const tempLocal = router.push({ pathname, query }, asPath, {
@@ -28,7 +23,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="w-[500px] h-[200px] mt-40 mx-auto">
+      <main className="w-[500px] mt-40 mx-auto">
         <div className="flex justify-end mb-20 font-en">
           <p
             className="cursor-pointer mx-2"
@@ -44,6 +39,9 @@ const Home: NextPage = () => {
           </p>
         </div>
         <div className="">
+          <p className="italic mb-10">
+            Below content can load from tranlation files OR from API.
+          </p>
           <p className="">{t("example1")}</p>
           <p className="">{t("example2")}</p>
           <p className="">{t("example3")}</p>
@@ -51,7 +49,9 @@ const Home: NextPage = () => {
       </main>
 
       <footer className="w-[500px] mx-auto">
-        <p className="mb-10">This paragraph is concrete, but it is in different fonts.</p>
+        <p className="mb-10">
+          This paragraph is concrete, but it is in different fonts.
+        </p>
         <p className="font-en">And you can have concrente fonts too.</p>
       </footer>
     </div>
